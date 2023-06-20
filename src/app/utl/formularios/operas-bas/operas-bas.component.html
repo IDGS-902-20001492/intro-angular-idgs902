@@ -1,8 +1,25 @@
-<mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
+<!--<mat-form-field class="example-form-field">
+    <mat-label>Input Limpiable</mat-label>
     <input matInput type="text" [(ngModel)]="value">
     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-     <!-- <mat-icon>close</mat-icon>-->
+    <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  
+-->
+
+<div class="contenedor">
+  <mat-form-field>
+    <input matInput [(ngModel)]="num1" type="number" placeholder="Numero1">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="num2" type="number" placeholder="Numero2">
+  </mat-form-field>
+  <mat-radio-group aria-label="Selecciona una opción" name="opciones" [(ngModel)]="operacionRealizada" class="mb-2">
+    <mat-radio-button *ngFor=" let op of tipoOperaciones " [value]="op" name="opciones" value="1">
+      {{op}}
+    </mat-radio-button>
+    <br>
+    <button mat-raised-button color="primary" (click)="calcular();" style="width: 100%;">Calcular</button>
+    <h1><p>El resultado es: {{resultado}}</p></h1>
+  </mat-radio-group>
+</div>
