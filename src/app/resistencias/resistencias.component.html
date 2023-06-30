@@ -1,0 +1,28 @@
+
+<div class="contenedor">
+        <mat-select placeholder="Selecciona una opción para la Banda1" [(ngModel)]="b1">
+            <mat-option *ngFor="let color of colBanda12" [value]="color">
+                {{color}}
+            </mat-option>        
+        </mat-select>
+        <mat-select placeholder="Selecciona una opción para la Banda2" [(ngModel)]="b2">
+            <mat-option *ngFor="let color of colBanda12" [value]="color">
+                {{color}}
+            </mat-option>        
+        </mat-select>
+        <mat-select placeholder="Selecciona una opción para la Banda3" [(ngModel)]="b3">
+            <mat-option *ngFor="let color of colBanda3" [value]="color">
+                {{color}}
+            </mat-option>
+        </mat-select>
+        <mat-select placeholder="Selecciona una opción para la Banda4" [(ngModel)]="b4">
+            <mat-option *ngFor="let color of colBanda4" [value]="color">
+                {{color}}
+            </mat-option>
+        </mat-select>
+
+    <button mat-raised-button color="primary" (click)="calcularResultado()" >Calcular</button>
+    <h1><p>El valor es: {{resultado}}</p></h1>
+    <h1><p>El minimo es: {{min}}</p></h1>
+    <h1><p>El maximo es: {{max}}</p></h1>
+</div>

@@ -16,31 +16,37 @@
         </div>
     </div>
     <div class="table-responsive">
+        <button class="btn btn-primary" (click)="showImage()">
+            {{muestraImagenes?' Ocultar ':' Muestra '}}Imagen</button>
         <table class="table" *ngIf="alumnosIric.length">
             <thead>
-                <tr>
-                    <th>
-                        <button class="btn btn-primary" (click)="showImage()">
-                            {{muestraImagenes?' Ocultar ':' Muestra '}}Imagen</button>
-                    </th>
+                <tr>                                                                
                     <th>Foto</th>
                     <th>Matricula</th>
                     <th>Nombre</th>
                     <th>Edad</th>
-                    <th>Correo</th>                    
+                    <th>Correo</th>            
+                    <th>Calificacion {{alumnosTitle}}</th>        
                 </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let alumno of alumnosIric">
+              <tr *ngFor="let alumno of alumnosIric | alumnoFilter:listFilter">
                 <!--Event property-->
-                <td><img *ngIf="muestraImagenes" [src]="alumno.foto" [title]="alumno.nombre" 
+                <td><img *ngIf="muestraImagenes" [src]="alumno.foto" 
+                                             [title]="alumno.nombre" 
                                              [style.width.px]="imageWidth"
                                              [style.margin.px]="imageMargin">
                                             </td>
                 <td>{{alumno.matricula}}</td>
-                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.nombre | uppercase}}</td>
                 <td>{{alumno.edad}}</td>
-                <td>{{alumno.correo}}</td>                
+                <td>{{alumno.correo}}</td>    
+                <td>
+                    <i class="fa fa-star"></i>
+                    {{alumno.calif}}
+                    <app-calificacion-alum (calificaClick)="onCalificaClick($event)"
+                    [califica]="alumno.calif">
+                </app-calificacion-alum></td>            
               </tr>
             </tbody>
         </table>
